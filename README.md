@@ -1,30 +1,33 @@
-# Loop Shift (Terminal Puzzle Game)
+# Cube Relay (Very Basic 3D First-Person Puzzle)
 
-A small but surprisingly tricky puzzle game you can play in your terminal.
+This project is now a **very basic 3D first-person puzzle game** made with plain HTML/CSS/JavaScript + Three.js.
 
-## Goal
-Rotate pipe-like tiles so every tile becomes connected to the central power source (`⚡`).
+## Puzzle concept
+You are in a small room with:
+- 2 energy cubes,
+- 2 floor pressure pads,
+- a locked exit door.
 
-## How to run
+Your goal: **put both cubes on the glowing pads** to unlock the door, then walk through the exit.
+
+## Controls
+- **WASD**: move
+- **Mouse**: look around (pointer lock)
+- **E**: pick up / drop cube
+- **R**: reset puzzle
+
+## Run locally
+Because this uses ES modules, run a local server:
+
 ```bash
-python3 puzzle_game.py
+python3 -m http.server 8000
 ```
 
-Optional flags:
+Then open:
 
-- `--rows 6 --cols 8` to change board size.
-- `--seed 42` for reproducible board layouts.
-- `--self-test` to run internal checks.
+- `http://localhost:8000`
 
-## Commands
-- `r c cw` — rotate tile at row `r`, col `c` clockwise.
-- `r c ccw` — rotate tile counterclockwise.
-- `hint` — suggests a useful move.
-- `shuffle` — reshuffles current board.
-- `show` — redraw board.
-- `quit` — exit.
-
-Coordinates are **1-indexed**.
-
-## Why it is interesting
-The board starts as a guaranteed connected network, then each tile is rotated randomly. Some configurations create loops and multiple possible local improvements, so greedy moves can still paint you into short-term dead ends. The `hint` command looks for immediate connectivity improvements, which helps beginners without fully solving the puzzle for them.
+## Notes
+- This is intentionally simple and self-contained.
+- No build step required.
+- Three.js is loaded from a CDN.
